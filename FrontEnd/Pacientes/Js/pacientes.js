@@ -13,6 +13,10 @@ async function mostrarData(){
 
         arrayPacientes.forEach((elemento) => {
             const { Nombre, Edad, Sexo, Celular,Identificacion,_id,Direccion,Hora,Tipo_Examen} = elemento;
+            let opcionesExamen = Tipo_Examen.map(tipo => 
+                `<option ${tipo === Tipo_Examen ? "selected" : ""}>${tipo}</option>`
+            ).join('');
+
             contenidoHTML += `
             <tr>
                 <th scope="row">${_id}</th>
@@ -24,9 +28,9 @@ async function mostrarData(){
                 <td>${Direccion} <input class="form-check-input" type="checkbox"></td>
                 <td>${Hora} <input class="form-check-input" type="checkbox"></td>
                 <td>
-                <select id="examenEdit" class="form-select">
-                    <option selected>${Tipo_Examen}</option>
-                </select>
+                <select id="examenEdit_${_id}" class="form-select">
+                        ${opcionesExamen}
+                    </select>
                 </td>
                 <td>
                     <button class="btn update" style="background-color: #937DE9;" data-bs-toggle="modal" data-bs-target="#exampleModal">
