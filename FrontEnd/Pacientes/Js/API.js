@@ -1,6 +1,8 @@
 const url = 'http://localhost:5000'
 
-
+const headers = {
+    'Content-Type': 'application/json'
+}
 const getData = async()=>{
     try {
         const response = await fetch(`${url}/pacientes/get`)   

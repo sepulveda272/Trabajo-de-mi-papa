@@ -37,3 +37,42 @@ async function mostrarData(){
         console.log(error);
     }
 }
+
+
+const formPaciente = document.querySelector('#formPaciente');
+
+formPaciente.addEventListener('submit',addPaciente);
+
+async function addPaciente(e){
+    e.preventDefault();
+        const nombre = document.getElementById("inputNombre").value;
+        const edad = document.getElementById("inputEdad").value;
+        const sexo = document.getElementById("inputSexo").value;
+        const direccion = document.getElementById("inputDireccion").value;
+        const celular = document.getElementById("inputCelular").value;
+        const fecha = document.getElementById("inputFecha").value;
+        const hora = document.getElementById("inputHora").value;
+
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const examenesSeleccionados = [];
+
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                examenesSeleccionados.push(checkbox.nextElementSibling.textContent);
+            }
+        });
+
+        const datosFormulario = {
+            nombre,
+            edad,
+            sexo,
+            direccion,
+            celular,
+            fecha,
+            hora,
+            examenesSeleccionados
+        };
+
+        addData(datosFormulario);
+
+}
