@@ -42,8 +42,12 @@ async function mostrarData() {
                 <td>${Hora} <input class="form-check-input" type="checkbox"></td>
                 <td>
                 <select id="examenEdit_${_id}" class="form-select">
-                        ${opcionesExamen}
-                    </select>
+                    ${opcionesExamen}
+                </select>
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label" for="inputExamen4">No Coinciden</label>
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label" for="inputExamen4">Incompletos</label>
                 </td>
                 <td>
                     <button class="btn update" style="background-color: #937DE9;" data-bs-toggle="modal" data-bs-target="#exampleModal">
