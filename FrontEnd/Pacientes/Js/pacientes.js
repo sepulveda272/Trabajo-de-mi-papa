@@ -26,7 +26,10 @@ async function mostrarData() {
 
         // Generar HTML dinámicamente para cada paciente
         arrayPacientes.forEach((elemento) => {
-            const { Nombre, Edad, Sexo, Celular, Identificacion, _id, Direccion, Hora, Tipo_Examen } = elemento;
+            const { Nombre, Edad, Sexo, Celular,Identificacion,_id,Direccion,Hora,Tipo_Examen} = elemento;
+            let opcionesExamen = Tipo_Examen.map(tipo => 
+                `<option ${tipo === Tipo_Examen ? "selected" : ""}>${tipo}</option>`
+            ).join('');
             contenidoHTML += `
             <tr>
                 <th scope="row">${_id}</th>
@@ -37,7 +40,11 @@ async function mostrarData() {
                 <td>${Celular} <input class="form-check-input" type="checkbox"></td>
                 <td>${Direccion} <input class="form-check-input" type="checkbox"></td>
                 <td>${Hora} <input class="form-check-input" type="checkbox"></td>
-                <td>${Tipo_Examen} <input class="form-check-input" type="checkbox"></td>
+                <td>
+                <select id="examenEdit_${_id}" class="form-select">
+                        ${opcionesExamen}
+                    </select>
+                </td>
                 <td>
                     <button class="btn update" style="background-color: #937DE9;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Actualizar
