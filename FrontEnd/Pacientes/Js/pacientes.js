@@ -9,28 +9,42 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function checkboxChanged1(checkbox) {
     if (checkbox.checked) {
-        contador1++;
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth(); // Obtener el mes actual (0-11)
+        localStorage.setItem(`fecha${currentMonth+1}`, currentDate.toISOString()); // Guardar la fecha actual en formato ISO
+        let contador = parseInt(localStorage.getItem(`contador1_${currentMonth+1}`) || '0'); // Obtener el contador correspondiente al mes actual
+        contador++;
+        localStorage.setItem(`contador1_${currentMonth+1}`, contador.toString()); // Incrementar el contador
         checkbox.disabled = true;
-        localStorage.setItem('contador1', contador1.toString());
-    }   
-    console.log("Contador1 de checkboxes marcados:", contador1);
+        localStorage.setItem('contador1', contador.toString());
+        console.log("Contador1 de checkboxes marcados:", contador);
+    }
 }
 
 function checkboxChanged2(checkbox2) {
     if (checkbox2.checked) {
-        contador2++;
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth(); // Obtener el mes actual (0-11)
+        localStorage.setItem(`fecha${currentMonth+1}`, currentDate.toISOString()); // Guardar la fecha actual en formato ISO
+        let contador = parseInt(localStorage.getItem(`contador2_${currentMonth+1}`) || '0'); // Obtener el contador correspondiente al mes actual
+        contador++;
+        localStorage.setItem(`contador2_${currentMonth+1}`, contador.toString()); // Incrementar el contador
         checkbox2.disabled = true;
-        localStorage.setItem('contador2', contador2.toString());
-    } 
-    console.log("Contador2 de checkboxes marcados:", contador2);
+        localStorage.setItem('contador2', contador.toString());
+    }
 }
+
 function checkboxChanged3(checkbox3) {
     if (checkbox3.checked) {
-        contador3++;
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth(); // Obtener el mes actual (0-11)
+        localStorage.setItem(`fecha${currentMonth+1}`, currentDate.toISOString()); // Guardar la fecha actual en formato ISO
+        let contador = parseInt(localStorage.getItem(`contador3_${currentMonth+1}`) || '0'); // Obtener el contador correspondiente al mes actual
+        contador++;
+        localStorage.setItem(`contador3_${currentMonth+1}`, contador.toString()); // Incrementar el contador
         checkbox3.disabled = true;
-        localStorage.setItem('contador3', contador3.toString());
-    } 
-    console.log("Contador3 de checkboxes marcados:", contador3);
+        localStorage.setItem('contador3', contador.toString());
+    }
 }
 
 async function mostrarData() {
@@ -104,10 +118,8 @@ async function mostrarData() {
 
 
 function setupCheckboxPersistence() {
-
     const checkboxes = document.querySelectorAll('.form-check-input1, .form-check-input2, .form-check-input3');
-    
-    const checkboxState = JSON.parse(localStorage.getItem('checkboxState')) || {};
+    let checkboxState = JSON.parse(localStorage.getItem('checkboxState')) || {};
 
     checkboxes.forEach((checkbox, index) => {
         const key = `checkbox-${index}`; 
@@ -121,7 +133,11 @@ function setupCheckboxPersistence() {
         }
 
         checkbox.addEventListener('change', function() {
-            checkboxState[key] = { checked: this.checked };
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth(); // Obtener el mes actual (0-11)
+            localStorage.setItem(`fecha${currentMonth+1}`, currentDate.toISOString()); // Guardar la fecha actual en formato ISO
+            const key = `checkbox-${index}`;
+            checkboxState[key] = { checked: this.checked, date: currentDate.toISOString() }; // Guardar el estado del checkbox junto con la fecha actual
 
             localStorage.setItem('checkboxState', JSON.stringify(checkboxState));
         });
