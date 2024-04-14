@@ -23,7 +23,11 @@ async function mostrarData(){
                 <td>${Celular} <input class="form-check-input" type="checkbox"></td>
                 <td>${Direccion} <input class="form-check-input" type="checkbox"></td>
                 <td>${Hora} <input class="form-check-input" type="checkbox"></td>
-                <td>${Tipo_Examen} <input class="form-check-input" type="checkbox"></td>
+                <td>
+                <select id="examenEdit" class="form-select">
+                    <option selected>${Tipo_Examen}</option>
+                </select>
+                </td>
                 <td>
                     <button class="btn update" style="background-color: #937DE9;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Actualizar
