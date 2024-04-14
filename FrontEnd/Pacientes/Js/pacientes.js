@@ -4,6 +4,7 @@ import { getData, addData } from "../Js/API.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     await mostrarData();
+    setupCheckboxPersistence();
 });
 
 function checkboxChanged1(checkbox) {
@@ -11,7 +12,7 @@ function checkboxChanged1(checkbox) {
         contador1++;
         checkbox.disabled = true;
         localStorage.setItem('contador1', contador1.toString());
-    } 
+    }   
     console.log("Contador1 de checkboxes marcados:", contador1);
 }
 
@@ -44,7 +45,7 @@ async function mostrarData() {
 
         // Generar HTML dinámicamente para cada paciente
         arrayPacientes.forEach((elemento) => {
-            const { Nombre, Edad, Sexo, Celular,Identificacion,_id,Direccion,Hora,Tipo_Examen} = elemento;
+            const { Nombre, Edad, Sexo, Celular,Identificacion,_id,Direccion,Hora,Tipo_Examen,Fecha} = elemento;
             let opcionesExamen = Tipo_Examen.map(tipo => 
                 `<option ${tipo === Tipo_Examen ? "selected" : ""}>${tipo}</option>`
             ).join('');
@@ -57,10 +58,11 @@ async function mostrarData() {
                 <td>${Identificacion} <input class="form-check-input1" type="checkbox"></td>
                 <td>${Celular} <input class="form-check-input1" type="checkbox"></td>
                 <td>${Direccion} <input class="form-check-input1" type="checkbox"></td>
+                <td>${Fecha} <input class="form-check-input1" type="checkbox"></td>
                 <td>${Hora} <input class="form-check-input1" type="checkbox"></td>
                 <td>
                 <select id="examenEdit_${_id}" class="form-select">
-                    ${opcionesExamen}
+                    ${Tipo_Examen}
                 </select>
                 <input class="form-check-input2" type="checkbox">
                 <label class="form-check-label" for="inputExamen4">No Coinciden</label>
@@ -100,6 +102,35 @@ async function mostrarData() {
     }
 }
 
+
+function setupCheckboxPersistence() {
+
+    const checkboxes = document.querySelectorAll('.form-check-input1, .form-check-input2, .form-check-input3');
+    
+    const checkboxState = JSON.parse(localStorage.getItem('checkboxState')) || {};
+
+    checkboxes.forEach((checkbox, index) => {
+        const key = `checkbox-${index}`; 
+
+        if (checkboxState.hasOwnProperty(key)) {
+            checkbox.checked = checkboxState[key].checked;
+
+            if (checkbox.checked) {
+                checkbox.disabled = true;
+            }
+        }
+
+        checkbox.addEventListener('change', function() {
+            checkboxState[key] = { checked: this.checked };
+
+            localStorage.setItem('checkboxState', JSON.stringify(checkboxState));
+        });
+    });
+}
+
+
+
+
 let contador1 = parseInt(localStorage.getItem('contador1') || '0');
 let contador2 = parseInt(localStorage.getItem('contador2') || '0');
 let contador3 = parseInt(localStorage.getItem('contador3') || '0');
@@ -119,6 +150,7 @@ async function addPaciente(e){
         const Direccion = document.getElementById("inputDireccion").value;
         const Celular = document.getElementById("inputCelular").value;
         const Identificacion = document.getElementById("inputIdentificacion").value;
+        const Fecha = document.getElementById("inputFecha").value;
         const Hora = document.getElementById("inputHora").value;
 
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -137,10 +169,11 @@ async function addPaciente(e){
             Direccion,
             Celular,
             Identificacion,
+            Fecha,
             Hora,
             Tipo_Examen
         };
 
         addData(datosFormulario);
-
+        window.location.href= 'Home.html'
 }

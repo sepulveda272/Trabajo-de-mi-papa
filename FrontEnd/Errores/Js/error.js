@@ -20,8 +20,9 @@ function construirYActualizarTabla() {
     ];
 
     // Crear y añadir filas para cada contador
+    
     for (let i = 0; i < categorias.length; i++) {
-        const contadorValue = localStorage.getItem(`contador${i+1}`) || '0'; // Obtener valor del Local Storage o 0
+        const contadorValue = localStorage.getItem(`contador${i+1}`) || '0'; 
         const tiempoGastado = contadorValue * estimado[i];
         const Trabajo = 86400
         const tiempoReal = Trabajo - tiempoGastado
