@@ -76,7 +76,7 @@ async function mostrarData() {
                 <td>${Hora} <input class="form-check-input1" type="checkbox"></td>
                 <td>
                 <select id="examenEdit_${_id}" class="form-select">
-                    ${Tipo_Examen}
+                    ${opcionesExamen}
                 </select>
                 <input class="form-check-input2" type="checkbox">
                 <label class="form-check-label" for="inputExamen4">No Coinciden</label>
