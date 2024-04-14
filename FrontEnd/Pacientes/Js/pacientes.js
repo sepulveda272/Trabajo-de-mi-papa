@@ -1,18 +1,32 @@
-import {addData,delData,getData,putData} from "./API.js";
+import { getData, addData } from "../Js/API.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-    mostrarData()
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await mostrarData();
 });
-async function mostrarData(){
+
+function checkboxChanged(checkbox) {
+    if (checkbox.checked) {
+        contador++;
+        checkbox.disabled = true;
+    } 
+    console.log("Contador de checkboxes marcados:", contador);
+}
+
+async function mostrarData() {
     try {
-        const pacientes = await getData();
+        
+        // Obtener datos de los pacientes
+        const pacientes = await getData(); 
         const contenedor = document.querySelector(".contenido");
-        const arrayPacientes = pacientes
+        const arrayPacientes = pacientes;
 
         let contenidoHTML = "";
 
+        // Generar HTML dinámicamente para cada paciente
         arrayPacientes.forEach((elemento) => {
-            const { Nombre, Edad, Sexo, Celular,Identificacion,_id,Direccion,Hora,Tipo_Examen} = elemento;
+            const { Nombre, Edad, Sexo, Celular, Identificacion, _id, Direccion, Hora, Tipo_Examen } = elemento;
             contenidoHTML += `
             <tr>
                 <th scope="row">${_id}</th>
@@ -32,12 +46,23 @@ async function mostrarData(){
             </tr>
             `;
         });
-    
+
         contenedor.innerHTML = contenidoHTML;
+
+        // Agregar el evento onclick a los checkboxes después de haber generado el contenido HTML
+        document.querySelectorAll('.form-check-input').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                checkboxChanged(this);
+            });
+        });
+
     } catch (error) {
         console.log(error);
     }
 }
+
+let contador = 0; // Inicializamos el contador
+
 
 
 const formPaciente = document.querySelector('#formPaciente');
@@ -46,32 +71,32 @@ formPaciente.addEventListener('submit',addPaciente);
 
 async function addPaciente(e){
     e.preventDefault();
-        const nombre = document.getElementById("inputNombre").value;
-        const edad = document.getElementById("inputEdad").value;
-        const sexo = document.getElementById("inputSexo").value;
-        const direccion = document.getElementById("inputDireccion").value;
-        const celular = document.getElementById("inputCelular").value;
-        const fecha = document.getElementById("inputFecha").value;
-        const hora = document.getElementById("inputHora").value;
+        const Nombre = document.getElementById("inputNombre").value;
+        const Edad = document.getElementById("inputEdad").value;
+        const Sexo = document.getElementById("inputSexo").value;
+        const Direccion = document.getElementById("inputDireccion").value;
+        const Celular = document.getElementById("inputCelular").value;
+        const Identificacion = document.getElementById("inputIdentificacion").value;
+        const Hora = document.getElementById("inputHora").value;
 
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        const examenesSeleccionados = [];
+        const Tipo_Examen = [];
 
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
-                examenesSeleccionados.push(checkbox.nextElementSibling.textContent);
+                Tipo_Examen.push(checkbox.nextElementSibling.textContent);
             }
         });
 
         const datosFormulario = {
-            nombre,
-            edad,
-            sexo,
-            direccion,
-            celular,
-            fecha,
-            hora,
-            examenesSeleccionados
+            Nombre,
+            Edad,
+            Sexo,
+            Direccion,
+            Celular,
+            Identificacion,
+            Hora,
+            Tipo_Examen
         };
 
         addData(datosFormulario);
