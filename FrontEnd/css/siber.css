@@ -1,0 +1,76 @@
+.navabar{
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 95%;
+    background-color: #140733;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+
+#hola{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#logo{
+    width: 50px;
+    height: 50px;
+}
+#uno{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+    padding-top: 10px;
+}
+
+#dos{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7vh;
+    width: 7vh;
+    border-radius: 7rem;
+    background-color: white;
+}
+
+.navabar > div > img{
+    width: 100%;
+    height: 50%;
+}
+.icon {
+    display: inline-block ;
+    width: 2em ;
+    height: 2em ;
+    stroke-width: 0 ;
+    stroke: currentColor ;
+    fill: rgb(255, 255, 255) ;
+    z-index: 100 ;
+}
+
+#hola1{
+    width: 100%;
+    height: 50px;
+}
+
+#tres{
+    display: flex;
+    justify-content: center;
+}
+
+.active{
+    padding-top: 8%;
+    text-align: center;
+    background-color: cyan;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+}
+
+.active a svg{
+    fill: rgb(0, 0, 0) ;
+}

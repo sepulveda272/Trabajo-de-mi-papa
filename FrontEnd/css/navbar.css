@@ -1,0 +1,131 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    width: 88%;
+    height: 95%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.content nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    margin: 0;
+}
+
+.content nav .item-nav1{
+    display: flex;
+    align-items: center;
+    height: auto;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content nav .item-nav1 h1{
+    font-size: 2.8rem;
+    margin: 0;
+    margin-left: 8px;
+}
+
+.content nav .item-nav1 i{
+    font-size: 1.8rem;
+    background-color: #997BE8;
+    padding: .8rem;
+    color: white;
+    border-radius: 8px;
+}
+
+.content nav .item-nav1 svg{
+    font-size: 1.8rem;
+    background-color: #997BE8;
+    padding: .8rem;
+    color: white;
+    border-radius: 8px;
+}
+
+.content nav .item-nav2{
+    display: flex;
+    height: auto;
+    margin: 0;
+}
+
+.content nav .item-nav2 h4{
+    font-family: 'Poppins', sans-serif;
+}
+
+.content nav .item-nav2 p{
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.content nav .item-nav2 .cerrarSesion{
+    display: flex;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.content nav .item-nav2 .cerrarSesion p{
+    margin-left: 8px;
+}
+
+.content nav .item-nav2 .contenedorPerfil{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.navAbajo{
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.navAbajo a{
+    height: 3rem;
+    border-radius: 13.78px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    background: #038FFE;
+}
+
+.navAbajo #buscar{
+    width: 340px;
+    height: 47.324px; 
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+.navAbajo #buscar input{
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+.navAbajo #buscar button{
+    border-radius: 0 10px 10px 0;
+    border-left: solid gray 2px;
+    padding-top: 4%;
+}
+
+.backgrouncito {
+    background-image: url(../img/alreves.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 50px;
+    border-radius: 6px;
+    height: auto;
+    width: 100%;
+}
+
+.backgrouncito p {
+    color: white;
+    font-size: 36px;
+    padding: 5px;
+    margin: 0;
+}
