@@ -6,12 +6,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     await mostrarData();
 });
 
-function checkboxChanged(checkbox) {
+function checkboxChanged1(checkbox) {
     if (checkbox.checked) {
-        contador++;
+        contador1++;
         checkbox.disabled = true;
+        localStorage.setItem('contador1', contador1.toString());
     } 
-    console.log("Contador de checkboxes marcados:", contador);
+    console.log("Contador1 de checkboxes marcados:", contador1);
+}
+
+function checkboxChanged2(checkbox2) {
+    if (checkbox2.checked) {
+        contador2++;
+        checkbox2.disabled = true;
+        localStorage.setItem('contador2', contador2.toString());
+    } 
+    console.log("Contador2 de checkboxes marcados:", contador2);
+}
+function checkboxChanged3(checkbox3) {
+    if (checkbox3.checked) {
+        contador3++;
+        checkbox3.disabled = true;
+        localStorage.setItem('contador3', contador3.toString());
+    } 
+    console.log("Contador3 de checkboxes marcados:", contador3);
 }
 
 async function mostrarData() {
@@ -33,20 +51,20 @@ async function mostrarData() {
             contenidoHTML += `
             <tr>
                 <th scope="row">${_id}</th>
-                <td>${Nombre} <input class="form-check-input" type="checkbox"></td>
-                <td>${Edad} <input class="form-check-input" type="checkbox"></td>
-                <td>${Sexo} <input class="form-check-input" type="checkbox"></td>
-                <td>${Identificacion} <input class="form-check-input" type="checkbox"></td>
-                <td>${Celular} <input class="form-check-input" type="checkbox"></td>
-                <td>${Direccion} <input class="form-check-input" type="checkbox"></td>
-                <td>${Hora} <input class="form-check-input" type="checkbox"></td>
+                <td>${Nombre} <input class="form-check-input1" type="checkbox"></td>
+                <td>${Edad} <input class="form-check-input1" type="checkbox"></td>
+                <td>${Sexo} <input class="form-check-input1" type="checkbox"></td>
+                <td>${Identificacion} <input class="form-check-input1" type="checkbox"></td>
+                <td>${Celular} <input class="form-check-input1" type="checkbox"></td>
+                <td>${Direccion} <input class="form-check-input1" type="checkbox"></td>
+                <td>${Hora} <input class="form-check-input1" type="checkbox"></td>
                 <td>
                 <select id="examenEdit_${_id}" class="form-select">
                     ${opcionesExamen}
                 </select>
-                <input class="form-check-input" type="checkbox">
+                <input class="form-check-input2" type="checkbox">
                 <label class="form-check-label" for="inputExamen4">No Coinciden</label>
-                <input class="form-check-input" type="checkbox">
+                <input class="form-check-input3" type="checkbox">
                 <label class="form-check-label" for="inputExamen4">Incompletos</label>
                 </td>
                 <td>
@@ -61,9 +79,19 @@ async function mostrarData() {
         contenedor.innerHTML = contenidoHTML;
 
         // Agregar el evento onclick a los checkboxes después de haber generado el contenido HTML
-        document.querySelectorAll('.form-check-input').forEach(checkbox => {
+        document.querySelectorAll('.form-check-input1').forEach(checkbox => {
             checkbox.addEventListener('click', function() {
-                checkboxChanged(this);
+                checkboxChanged1(this);
+            });
+        });
+        document.querySelectorAll('.form-check-input2').forEach(checkbox2 => {
+            checkbox2.addEventListener('click', function() {
+                checkboxChanged2(this);
+            });
+        });
+        document.querySelectorAll('.form-check-input3').forEach(checkbox3 => {
+            checkbox3.addEventListener('click', function() {
+                checkboxChanged3(this);
             });
         });
 
@@ -72,7 +100,10 @@ async function mostrarData() {
     }
 }
 
-let contador = 0; // Inicializamos el contador
+let contador1 = parseInt(localStorage.getItem('contador1') || '0');
+let contador2 = parseInt(localStorage.getItem('contador2') || '0');
+let contador3 = parseInt(localStorage.getItem('contador3') || '0');
+
 
 
 
