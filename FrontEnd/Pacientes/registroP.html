@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../css/siber.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <!-- FUENTE GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/40e41b5181.js" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="navabar">
+            <div id="hola">
+                <div id="dos">
+                    <img src="../img/logoRVG.png" alt="" id="logo">
+                </div>
+                <div id="uno" style="margin-top: 18px;">
+                    <div  class="active">
+                        <a href="./Home.html">
+                            <svg class="icon icon-home3"><use xlink:href="#icon-home3"><symbol id="icon-home3" viewBox="0 0 32 32">
+                                <path d="M32 19l-6-6v-9h-4v5l-6-6-16 16v1h4v10h10v-6h4v6h10v-10h4z"></path>
+                                </symbol></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div id="uno">
+                    <a href="../Errores/Tabla.html">
+                        <svg class="icon icon-svg"><use xlink:href="#icon-svg"><symbol id="icon-svg" viewBox="0 0 32 32">
+                            <path d="M29 13c-0.888 0-1.686 0.386-2.236 1h-5.936l4.197-4.197c0.822 0.046 1.66-0.245 2.288-0.874 1.172-1.172 1.172-3.071 0-4.243s-3.071-1.172-4.243 0c-0.628 0.628-0.919 1.466-0.874 2.288l-4.197 4.197v-5.936c0.614-0.549 1-1.347 1-2.236 0-1.657-1.343-3-3-3s-3 1.343-3 3c0 0.888 0.386 1.686 1 2.236v5.936l-4.197-4.197c0.045-0.822-0.245-1.66-0.874-2.288-1.172-1.172-3.071-1.172-4.243 0s-1.172 3.071 0 4.243c0.628 0.628 1.466 0.919 2.288 0.874l4.197 4.197h-5.936c-0.549-0.614-1.347-1-2.236-1-1.657 0-3 1.343-3 3s1.343 3 3 3c0.888 0 1.686-0.386 2.236-1h5.936l-4.197 4.197c-0.822-0.046-1.66 0.245-2.288 0.874-1.172 1.172-1.172 3.071 0 4.243s3.071 1.172 4.243 0c0.628-0.628 0.919-1.466 0.874-2.288l4.197-4.197v5.936c-0.614 0.549-1 1.347-1 2.235 0 1.657 1.343 3 3 3s3-1.343 3-3c0-0.888-0.386-1.686-1-2.236v-5.936l4.197 4.197c-0.046 0.822 0.245 1.66 0.874 2.288 1.172 1.172 3.071 1.172 4.243 0s1.172-3.071 0-4.243c-0.628-0.628-1.466-0.919-2.288-0.874l-4.197-4.197h5.936c0.549 0.614 1.347 1 2.235 1 1.657 0 3-1.343 3-3s-1.343-3-3-3z"></path>
+                            </symbol></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <nav>
+                <div class="item-nav1">
+                    <i class="fa-solid fa-user-plus" style="background-color: #7BE8D4; color: #140733;" ></i>
+                    <h1 style="height: 3.4rem;">Registro</h1>
+                </div>
+                <div class="item-nav2">
+                    <div class="d-flex flex-column align-items-end">
+                        <h4 class="nombreP">Jairo Sepulveda</h4>
+                        <div class="cerrarSesion">
+                            <div id="iconos">
+                                <i id="iconoAbajo" class="fa-solid fa-angle-down" style="font-size: 30px;"></i>
+                                <i id="iconoArriba" class="fa-solid fa-angle-up" style="font-size: 30px; display: none;"></i>
+                            </div>
+                            <p class="trabajo">Bacteriologo</p>
+                        </div>
+                    </div>
+                    <div class="contenedorPerfil">
+                        <img style="height: 100%;" id="fotoPerfil" src="../img/fotoPerfil.jpeg" alt="">
+                    </div>
+                </div>
+            </nav>
+            <div>
+                <div class="backgrouncito">
+                    <p>Nuevo paciente</p>
+                </div>
+                <div class="mrd">
+                    <form method="post" class="row g-3 formularioP" id="formPaciente">
+                        <div class="col-md-8">
+                          <label for="inputNombre" class="form-label">Nombre del paciente</label>
+                          <input type="text" class="form-control" id="inputNombre">
+                        </div>
+                        <div class="col-md-2">
+                          <label for="inputEdad" class="form-label">Edad</label>
+                          <input type="number" class="form-control" id="inputEdad">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="inputSexo" class="form-label">Sexo</label>
+                            <select id="inputSexo" class="form-select">
+                                <option selected>Genero...</option>
+                                <option>Hombre</option>
+                                <option>Mujer</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="col-8">
+                          <label for="inputDireccion" class="form-label">Direccion del paciente</label>
+                          <input type="text" class="form-control" id="inputDireccion">
+                        </div>
+                        <div class="col-4">
+                          <label for="inputCelular" class="form-label">Celular</label>
+                          <input type="number" class="form-control" id="inputCelular">
+                        </div>
+                        <div class="col-md-3">
+                          <label for="inputFecha" class="form-label">Fecha de atencion</label>
+                          <input type="date" class="form-control" id="inputFecha">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputHora" class="form-label">Hora</label>
+                            <input type="time" class="form-control" id="inputHora">
+                        </div>
+                        <div class="container mt-5">
+                            <label for="inputExamen" class="form-label">Tipo de examen</label>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="inputExamen1">
+                                        <label class="form-check-label" for="inputExamen1">Glicemia</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="inputExamen2">
+                                        <label class="form-check-label" for="inputExamen2">Creatinina</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="inputExamen3">
+                                        <label class="form-check-label" for="inputExamen3">GOT</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="inputExamen4">
+                                        <label class="form-check-label" for="inputExamen4">GPT</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- Aquí irían las siguientes filas similares a la anterior, cambiando los IDs y las etiquetas de los checkbox según necesidad -->
+                            </div>
+                        </div>
+                        <div class="t">
+                            <div>
+                                <a href="./Home.html" class="btn btn-danger">Cancelar</a>
+                                <button type="submit" class="btn btn-warning">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./Rpaciente.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
