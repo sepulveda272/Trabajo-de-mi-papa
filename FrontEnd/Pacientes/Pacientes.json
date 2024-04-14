@@ -1,0 +1,12 @@
+[
+    {
+        "Nombre": "Nombre",
+        "Edad": "Edad",
+        "Sexo": "Sexo",
+        "Identificacion": "Identificacion",
+        "Direccion": "Direccion",
+        "Celular": "Celular",
+        "Hora": "Hora",
+        "Tipo_Examen": "Tipo Examen"
+    }
+]
