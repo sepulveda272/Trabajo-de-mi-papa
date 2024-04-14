@@ -1,8 +1,7 @@
-import { getData, addData } from "../Js/API.js";
-
-
+import {getData} from '../Js/API.js'
 
 document.addEventListener("DOMContentLoaded", async () => {
+    verificarCambioDeMes();
     await mostrarData();
     setupCheckboxPersistence();
 });
@@ -144,12 +143,35 @@ function setupCheckboxPersistence() {
     });
 }
 
+function verificarCambioDeMes() {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1; // Obtener el mes actual (1-12)
+    const lastStoredMonth = parseInt(localStorage.getItem('lastStoredMonth')) || 0; // Obtener el último mes almacenado
 
+    if (currentMonth !== lastStoredMonth) {
+        // Si hay un cambio de mes, guardar los datos del mes anterior y reiniciar los contadores para el nuevo mes
+        guardarDatosMesAnterior(lastStoredMonth);
+        reiniciarContadores(currentMonth);
+        localStorage.setItem('lastStoredMonth', currentMonth);
+    }
+}
 
+function guardarDatosMesAnterior(lastMonth) {
+    const contadores = ['contador1', 'contador2', 'contador3']; // Nombres de los contadores a reiniciar
+    contadores.forEach(contador => {
+        const contadorValue = parseInt(localStorage.getItem(contador) || '0');
+        localStorage.setItem(`contador${lastMonth}_${contador}`, contadorValue.toString());
+        localStorage.removeItem(contador); // Reiniciar el contador actual
+    });
+}
 
-let contador1 = parseInt(localStorage.getItem('contador1') || '0');
-let contador2 = parseInt(localStorage.getItem('contador2') || '0');
-let contador3 = parseInt(localStorage.getItem('contador3') || '0');
+function reiniciarContadores(currentMonth) {
+    const contadores = ['contador1', 'contador2', 'contador3']; // Nombres de los contadores a reiniciar
+    contadores.forEach(contador => {
+        localStorage.setItem(contador, '0'); // Reiniciar el contador para el nuevo mes
+    });
+}
+
 
 
 
