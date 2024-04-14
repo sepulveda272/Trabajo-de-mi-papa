@@ -12,22 +12,23 @@ async function mostrarData(){
         let contenidoHTML = "";
 
         arrayPacientes.forEach((elemento) => {
-            const { Nombre, Edad, Sexo, Celular,_id,Direccion,Hora,Tipo_Examen} = elemento;
+            const { Nombre, Edad, Sexo, Celular,Identificacion,_id,Direccion,Hora,Tipo_Examen} = elemento;
             contenidoHTML += `
             <tr>
                 <th scope="row">${_id}</th>
                 <td>${Nombre}</td>
                 <td>${Edad}</td>
                 <td>${Sexo}</td>
+                <td>${Identificacion}</td>
                 <td>${Celular}</td>
                 <td>${Direccion}</td>
                 <td>${Hora}</td>
                 <td>${Tipo_Examen}</td>
+                <td>
                     <button class="btn update" style="background-color: #937DE9;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Actualizar
                     </button>
                 </td>
-                <td><button class="btn btn-danger eliminar" id="${_id}">Borrar</button></td>
             </tr>
             `;
         });
