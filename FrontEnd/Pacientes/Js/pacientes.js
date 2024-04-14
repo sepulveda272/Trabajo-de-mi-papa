@@ -16,14 +16,14 @@ async function mostrarData(){
             contenidoHTML += `
             <tr>
                 <th scope="row">${_id}</th>
-                <td>${Nombre}</td>
-                <td>${Edad}</td>
-                <td>${Sexo}</td>
-                <td>${Identificacion}</td>
-                <td>${Celular}</td>
-                <td>${Direccion}</td>
-                <td>${Hora}</td>
-                <td>${Tipo_Examen}</td>
+                <td>${Nombre} <input class="form-check-input" type="checkbox"></td>
+                <td>${Edad} <input class="form-check-input" type="checkbox"></td>
+                <td>${Sexo} <input class="form-check-input" type="checkbox"></td>
+                <td>${Identificacion} <input class="form-check-input" type="checkbox"></td>
+                <td>${Celular} <input class="form-check-input" type="checkbox"></td>
+                <td>${Direccion} <input class="form-check-input" type="checkbox"></td>
+                <td>${Hora} <input class="form-check-input" type="checkbox"></td>
+                <td>${Tipo_Examen} <input class="form-check-input" type="checkbox"></td>
                 <td>
                     <button class="btn update" style="background-color: #937DE9;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Actualizar
