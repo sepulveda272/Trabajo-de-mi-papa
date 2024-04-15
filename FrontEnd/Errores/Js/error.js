@@ -64,9 +64,10 @@ function construirYActualizarTabla() {
 
     // Obtener el mes actual y el mes anterior
     const fechaActual = new Date();
-    const currentMonth = fechaActual.getMonth() + 1;
-    const lastMonth = currentMonth === 1 ? 12 : currentMonth - 1;
-    const lastLastMonth = currentMonth === 1 ? 12 : currentMonth - 2;
+    const currentMonth = fechaActual.getMonth() + 1;  // Meses de 1 a 12
+    const lastMonth = (currentMonth === 1) ? 12 : currentMonth - 1;
+    const lastLastMonth = (lastMonth === 1) ? 12 : lastMonth - 1;
+
 
     // Crear y añadir filas para cada contador (tanto del mes actual como del mes anterior)
     for (let i = 0; i < categorias.length; i++) {
@@ -90,31 +91,31 @@ function construirYActualizarTabla() {
         // Crear filas para el mes actual y el mes anterior
         const newRowCurrent = `
             <tr>
-                <td></td>
-                <td>${meses[currentMonth - 1]}</td>
-                <td>${categorias[i]}</td>
-                <td>${contadorValueCurrent}</td>
-                <td>${estimado[i]} minutos</td>
-                <td>${tiempoGastadoCurrent} min</td>
-                <td>${86400} min</td>
-                <td>${tiempoRealCurrent} min</td>
+                <th>${meses[currentMonth - 1]}</th>
+                <th>${categorias[i]}</th>
+                <th>${contadorValueCurrent}</th>
+                <th>${estimado[i]} minutos</th>
+                <th>${tiempoGastadoCurrent} min</th>
+                <th>${86400} min</th>
+                <th>${tiempoRealCurrent} min</th>
+                <th>$1.460.000</th>
             </tr>
         `;
-        const prueba = `
+        const newRowLastLast = `
             <tr>
-                <td></td>
-                <td>${meses[lastMonth - 2]}</td>
+                <td>${meses[lastLastMonth - 1]}</td>
                 <td>${categorias[i]}</td>
                 <td>${contadorValueLastLast}</td>
                 <td>${estimado[i]} minutos</td>
-                <td>${tiempoGastadoCurrent} min</td>
+                <td>${tiempoGastadoLastLast} min</td>
                 <td>${86400} min</td>
                 <td>${tiempoRealLastLast} min</td>
+                <td>$1.460.000</td>
             </tr>
         `;
+
         const newRowLast = `
             <tr>
-            <td></td>
                 <td>${meses[lastMonth - 1]}</td>
                 <td>${categorias[i]}</td>
                 <td>${contadorValueLast}</td>
@@ -122,10 +123,11 @@ function construirYActualizarTabla() {
                 <td>${tiempoGastadoLast} min</td>
                 <td>${86400} min</td>
                 <td>${tiempoRealLast} min</td>
+                <td>$1.460.000</td>
             </tr>
         `;
 
         // Añadir las nuevas filas al contenido del tbody
-        contenedor.innerHTML += newRowCurrent + newRowLast + prueba;
+        contenedor.innerHTML += newRowLastLast + newRowLast + newRowCurrent;
     }
 }

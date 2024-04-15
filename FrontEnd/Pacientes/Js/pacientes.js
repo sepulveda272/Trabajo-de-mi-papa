@@ -68,6 +68,7 @@ async function mostrarData() {
         const arrayPacientes = pacientes;
 
         let contenidoHTML = "";
+        let rowNumber = 1; 
 
         // Generar HTML dinámicamente para cada paciente
         arrayPacientes.forEach((elemento) => {
@@ -80,7 +81,7 @@ async function mostrarData() {
             ).join('');
             contenidoHTML += `
             <tr>
-                <th scope="row">${_id}</th>
+                <th scope="row">${rowNumber}</th>
                 <td>${Nombre} <input class="form-check-input1" type="checkbox"></td>
                 <td>${Edad} <input class="form-check-input1" type="checkbox"></td>
                 <td>${Sexo} <input class="form-check-input1" type="checkbox"></td>
@@ -107,6 +108,7 @@ async function mostrarData() {
                 </td>
             </tr>
             `;
+            rowNumber++
         });
 
         contenedor.innerHTML = contenidoHTML;
@@ -259,4 +261,5 @@ async function addPaciente(e){
         };
 
         addData(datosFormulario);
+        window.location.href= 'Home.html'
 }
