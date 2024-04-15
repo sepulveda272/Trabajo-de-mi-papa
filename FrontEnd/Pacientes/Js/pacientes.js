@@ -53,7 +53,7 @@ function checkboxChanged4(checkbox4) {
         let contador = parseInt(localStorage.getItem(`contador4_${currentMonth+1}`) || '0'); // Obtener el contador correspondiente al mes actual
         contador++;
         localStorage.setItem(`contador4_${currentMonth+1}`, contador.toString()); // Incrementar el contador
-        checkbox3.disabled = true;
+        checkbox4.disabled = true;
         localStorage.setItem('contador4', contador.toString());
     }
 }

@@ -84,6 +84,18 @@ function construirYActualizarTabla() {
                 <td>${tiempoRealCurrent} min</td>
             </tr>
         `;
+        const prueba = `
+            <tr>
+                <td></td>
+                <td>${meses[lastMonth - 2]}</td>
+                <td>${categorias[i]}</td>
+                <td>${contadorValueCurrent}</td>
+                <td>${estimado[i]} minutos</td>
+                <td>${tiempoGastadoCurrent} min</td>
+                <td>${86400} min</td>
+                <td>${tiempoRealCurrent} min</td>
+            </tr>
+        `;
         const newRowLast = `
             <tr>
             <td></td>
@@ -98,6 +110,6 @@ function construirYActualizarTabla() {
         `;
 
         // Añadir las nuevas filas al contenido del tbody
-        contenedor.innerHTML += newRowCurrent + newRowLast;
+        contenedor.innerHTML += newRowCurrent + newRowLast + prueba;
     }
 }
