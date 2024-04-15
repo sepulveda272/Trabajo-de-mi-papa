@@ -2,6 +2,7 @@ import {getData,addData} from '../Js/API.js'
 
 document.addEventListener("DOMContentLoaded", async () => {
     verificarCambioDeMes();
+    verificarCambioDeMesAnterior();
     await mostrarData();
     setupCheckboxPersistence();
 });
@@ -167,7 +168,7 @@ function setupCheckboxPersistence() {
 
 function verificarCambioDeMes() {
     const currentDate = new Date();
-    const currentMonth = currentDate.getMonth() + 1; // Obtener el mes actual (1-12)
+    const currentMonth = currentDate.getMonth() -1; // Obtener el mes actual (1-12)
     const lastStoredMonth = parseInt(localStorage.getItem('lastStoredMonth')) || 0; // Obtener el último mes almacenado
 
     if (currentMonth !== lastStoredMonth) {
@@ -175,6 +176,19 @@ function verificarCambioDeMes() {
         guardarDatosMesAnterior(lastStoredMonth);
         reiniciarContadores(currentMonth);
         localStorage.setItem('lastStoredMonth', currentMonth);
+    }
+}
+
+function verificarCambioDeMesAnterior() {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1; // Obtener el mes actual (1-12)
+    const lastLastStoredMonth = parseInt(localStorage.getItem('lastLastStoredMonth')) || 0; // Obtener el último mes almacenado
+
+    if (currentMonth !== lastLastStoredMonth) {
+        // Si hay un cambio de mes, guardar los datos del mes anterior y reiniciar los contadores para el nuevo mes
+        guardarDatosMesAnterior(lastLastStoredMonth);
+        reiniciarContadores(currentMonth);
+        localStorage.setItem('lastLastStoredMonth', currentMonth);
     }
 }
 

@@ -7,10 +7,12 @@ function verificarCambioDeMes() {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth() + 1; // Obtener el mes actual (1-12)
     const lastStoredMonth = parseInt(localStorage.getItem('lastStoredMonth')) || 0; // Obtener el último mes almacenado
+    const lastLastStoredMonth = parseInt(localStorage.getItem('lastLastStoredMonth')) || 0; // Obtener el último mes almacenado
 
     if (currentMonth !== lastStoredMonth) {
         // Si hay un cambio de mes, guardar los datos del mes anterior y reiniciar los contadores para el nuevo mes
         guardarDatosMesAnterior(lastStoredMonth);
+        guardarDatosMesAnteriorAnterios(lastLastStoredMonth);
         reiniciarContadores(currentMonth);
         localStorage.setItem('lastStoredMonth', currentMonth);
     }
@@ -21,6 +23,14 @@ function guardarDatosMesAnterior(lastMonth) {
     contadores.forEach(contador => {
         const contadorValue = parseInt(localStorage.getItem(contador) || '0');
         localStorage.setItem(`contador${lastMonth}_${contador}`, contadorValue.toString());
+        localStorage.removeItem(contador); // Reiniciar el contador actual
+    });
+}
+function guardarDatosMesAnteriorAnterios(lastLastMonth) {
+    const contadores = ['contador1', 'contador2', 'contador3','contador4']; // Nombres de los contadores a reiniciar
+    contadores.forEach(contador => {
+        const contadorValue = parseInt(localStorage.getItem(contador) || '0');
+        localStorage.setItem(`contador${lastLastMonth}_${contador}`, contadorValue.toString());
         localStorage.removeItem(contador); // Reiniciar el contador actual
     });
 }
@@ -56,12 +66,14 @@ function construirYActualizarTabla() {
     const fechaActual = new Date();
     const currentMonth = fechaActual.getMonth() + 1;
     const lastMonth = currentMonth === 1 ? 12 : currentMonth - 1;
+    const lastLastMonth = currentMonth === 1 ? 12 : currentMonth - 2;
 
     // Crear y añadir filas para cada contador (tanto del mes actual como del mes anterior)
     for (let i = 0; i < categorias.length; i++) {
         // Obtener los valores del mes actual y del mes anterior
         const contadorValueCurrent = localStorage.getItem(`contador${i+1}_${currentMonth}`) || '0';
         const contadorValueLast = localStorage.getItem(`contador${i+1}_${lastMonth}`) || '0';
+        const contadorValueLastLast = localStorage.getItem(`contador${i+1}_${lastLastMonth}`) || '0';
 
         // Calcular tiempo gastado y tiempo real para el mes actual
         const tiempoGastadoCurrent = contadorValueCurrent * estimado[i];
@@ -70,6 +82,10 @@ function construirYActualizarTabla() {
         // Calcular tiempo gastado y tiempo real para el mes anterior
         const tiempoGastadoLast = contadorValueLast * estimado[i];
         const tiempoRealLast = 86400 - tiempoGastadoLast;
+
+        // Calcular tiempo gastado y tiempo real para el mes anterior
+        const tiempoGastadoLastLast = contadorValueLastLast * estimado[i];
+        const tiempoRealLastLast = 86400 - tiempoGastadoLastLast;
 
         // Crear filas para el mes actual y el mes anterior
         const newRowCurrent = `
@@ -89,11 +105,11 @@ function construirYActualizarTabla() {
                 <td></td>
                 <td>${meses[lastMonth - 2]}</td>
                 <td>${categorias[i]}</td>
-                <td>${contadorValueCurrent}</td>
+                <td>${contadorValueLastLast}</td>
                 <td>${estimado[i]} minutos</td>
                 <td>${tiempoGastadoCurrent} min</td>
                 <td>${86400} min</td>
-                <td>${tiempoRealCurrent} min</td>
+                <td>${tiempoRealLastLast} min</td>
             </tr>
         `;
         const newRowLast = `
