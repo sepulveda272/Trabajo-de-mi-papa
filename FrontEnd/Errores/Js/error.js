@@ -68,13 +68,21 @@ function construirYActualizarTabla() {
     const lastMonth = (currentMonth === 1) ? 12 : currentMonth - 1;
     const lastLastMonth = (lastMonth === 1) ? 12 : lastMonth - 1;
 
+    let sumaDeValoresLastLast = 0; 
+    let sumaDeValoresLast = 0; 
+    let sumaDeValoresCurrent = 0; 
+
 
     // Crear y añadir filas para cada contador (tanto del mes actual como del mes anterior)
     for (let i = 0; i < categorias.length; i++) {
         // Obtener los valores del mes actual y del mes anterior
-        const contadorValueCurrent = localStorage.getItem(`contador${i+1}_${currentMonth}`) || '0';
-        const contadorValueLast = localStorage.getItem(`contador${i+1}_${lastMonth}`) || '0';
-        const contadorValueLastLast = localStorage.getItem(`contador${i+1}_${lastLastMonth}`) || '0';
+        const contadorValueCurrent = parseInt(localStorage.getItem(`contador${i+1}_${currentMonth}`) || '0');
+        const contadorValueLast = parseInt(localStorage.getItem(`contador${i+1}_${lastMonth}`) || '0');
+        const contadorValueLastLast = parseInt(localStorage.getItem(`contador${i+1}_${lastLastMonth}`) || '0');
+
+        sumaDeValoresLastLast += contadorValueLastLast;
+        sumaDeValoresLast += contadorValueLast;
+        sumaDeValoresCurrent += contadorValueCurrent;
 
         // Calcular tiempo gastado y tiempo real para el mes actual
         const tiempoGastadoCurrent = contadorValueCurrent * estimado[i];
@@ -101,6 +109,10 @@ function construirYActualizarTabla() {
                 <th>$1.460.000</th>
             </tr>
         `;
+        
+
+        console.log(contadorValueLastLast);
+
         const newRowLastLast = `
             <tr>
                 <td>${meses[lastLastMonth - 1]}</td>
@@ -130,4 +142,7 @@ function construirYActualizarTabla() {
         // Añadir las nuevas filas al contenido del tbody
         contenedor.innerHTML += newRowLastLast + newRowLast + newRowCurrent;
     }
+    console.log("Suma total de valores de febrero:", sumaDeValoresLastLast);
+    console.log("Suma total de valores de febrero:", sumaDeValoresLast);
+    console.log("Suma total de valores de febrero:", sumaDeValoresCurrent);
 }
