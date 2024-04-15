@@ -145,4 +145,25 @@ function construirYActualizarTabla() {
     console.log("Suma total de valores de febrero:", sumaDeValoresLastLast);
     console.log("Suma total de valores de marzo:", sumaDeValoresLast);
     console.log("Suma total de valores de Abril:", sumaDeValoresCurrent);
+
+    const por = (sumaDeValoresCurrent*100)/2813
+
+    const tabla_por = document.querySelector(".por")
+
+    let contenidoHTML = "";
+
+    contenidoHTML = `
+    <tr>
+        <td>Febrero</td>
+        <td>${sumaDeValoresCurrent}</td>
+        <td>${por}</td>
+    </tr>
+    <tr>
+        <td>Marzo</td>
+        <td>Marzo</td>
+        <td>Marzo</td>
+    </tr>
+    `;
+
+    tabla_por.innerHTML = contenidoHTML
 }
