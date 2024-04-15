@@ -17,7 +17,7 @@ function verificarCambioDeMes() {
 }
 
 function guardarDatosMesAnterior(lastMonth) {
-    const contadores = ['contador1', 'contador2', 'contador3']; // Nombres de los contadores a reiniciar
+    const contadores = ['contador1', 'contador2', 'contador3','contador4']; // Nombres de los contadores a reiniciar
     contadores.forEach(contador => {
         const contadorValue = parseInt(localStorage.getItem(contador) || '0');
         localStorage.setItem(`contador${lastMonth}_${contador}`, contadorValue.toString());
@@ -26,7 +26,7 @@ function guardarDatosMesAnterior(lastMonth) {
 }
 
 function reiniciarContadores(currentMonth) {
-    const contadores = ['contador1', 'contador2', 'contador3']; // Nombres de los contadores a reiniciar
+    const contadores = ['contador1', 'contador2', 'contador3','contador4']; // Nombres de los contadores a reiniciar
     contadores.forEach(contador => {
         localStorage.setItem(contador, '0'); // Reiniciar el contador para el nuevo mes
     });
@@ -40,11 +40,13 @@ function construirYActualizarTabla() {
     const categorias = [
         "Paciente",
         "Exámenes Mal Ingresados",
-        "Exámenes Faltantes"
+        "Exámenes Faltantes",
+        "Mal Ingresados"
     ];
 
     const estimado = [
         2,
+        60,
         60,
         60
     ];

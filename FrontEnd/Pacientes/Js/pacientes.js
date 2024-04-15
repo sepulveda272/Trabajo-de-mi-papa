@@ -45,6 +45,18 @@ function checkboxChanged3(checkbox3) {
         localStorage.setItem('contador3', contador.toString());
     }
 }
+function checkboxChanged4(checkbox4) {
+    if (checkbox4.checked) {
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth(); // Obtener el mes actual (0-11)
+        localStorage.setItem(`fecha${currentMonth+1}`, currentDate.toISOString()); // Guardar la fecha actual en formato ISO
+        let contador = parseInt(localStorage.getItem(`contador4_${currentMonth+1}`) || '0'); // Obtener el contador correspondiente al mes actual
+        contador++;
+        localStorage.setItem(`contador4_${currentMonth+1}`, contador.toString()); // Incrementar el contador
+        checkbox3.disabled = true;
+        localStorage.setItem('contador4', contador.toString());
+    }
+}
 
 async function mostrarData() {
     try {
@@ -90,7 +102,7 @@ async function mostrarData() {
                       ${opcionesSistema}
                     </select><br/>
                     <input class="form-check-input4" type="checkbox">
-                    <label class="form-check-label" for="inputExamen4">Mal ingresados</label>
+                    <label class="form-check-label" for="inputExamen5">Mal ingresados</label>
                 </td>
             </tr>
             `;
@@ -114,6 +126,11 @@ async function mostrarData() {
                 checkboxChanged3(this);
             });
         });
+        document.querySelectorAll('.form-check-input4').forEach(checkbox3 => {
+            checkbox3.addEventListener('click', function() {
+                checkboxChanged4(this);
+            });
+        });
 
     } catch (error) {
         console.log(error);
@@ -122,7 +139,7 @@ async function mostrarData() {
 
 
 function setupCheckboxPersistence() {
-    const checkboxes = document.querySelectorAll('.form-check-input1, .form-check-input2, .form-check-input3');
+    const checkboxes = document.querySelectorAll('.form-check-input1, .form-check-input2, .form-check-input3,.form-check-input4');
     let checkboxState = JSON.parse(localStorage.getItem('checkboxState')) || {};
 
     checkboxes.forEach((checkbox, index) => {
@@ -162,7 +179,7 @@ function verificarCambioDeMes() {
 }
 
 function guardarDatosMesAnterior(lastMonth) {
-    const contadores = ['contador1', 'contador2', 'contador3']; // Nombres de los contadores a reiniciar
+    const contadores = ['contador1', 'contador2', 'contador3','contador4']; // Nombres de los contadores a reiniciar
     contadores.forEach(contador => {
         const contadorValue = parseInt(localStorage.getItem(contador) || '0');
         localStorage.setItem(`contador${lastMonth}_${contador}`, contadorValue.toString());
@@ -171,7 +188,7 @@ function guardarDatosMesAnterior(lastMonth) {
 }
 
 function reiniciarContadores(currentMonth) {
-    const contadores = ['contador1', 'contador2', 'contador3']; // Nombres de los contadores a reiniciar
+    const contadores = ['contador1', 'contador2', 'contador3','contador4']; // Nombres de los contadores a reiniciar
     contadores.forEach(contador => {
         localStorage.setItem(contador, '0'); // Reiniciar el contador para el nuevo mes
     });
