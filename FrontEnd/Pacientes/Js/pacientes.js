@@ -78,14 +78,16 @@ async function mostrarData() {
                     ${opcionesExamen}
                 </select>
                 <input class="form-check-input2" type="checkbox">
-                <label class="form-check-label" for="inputExamen4">No Coinciden</label>
+                <label class="form-check-label" for="inputExamen4">No Coinciden</label><br/>
                 <input class="form-check-input3" type="checkbox">
                 <label class="form-check-label" for="inputExamen4">Incompletos</label>
                 </td>
                 <td>
-                    ${Sistema}
-                    <input class="form-check-input2" type="checkbox">
-                    <label class="form-check-label" for="inputExamen4">No Coinciden</label>
+                    <select class="form-select">
+                      ${Sistema}
+                    </select><br/>
+                    <input class="form-check-input4" type="checkbox">
+                    <label class="form-check-label" for="inputExamen4">Mal ingresados</label>
                 </td>
             </tr>
             `;
