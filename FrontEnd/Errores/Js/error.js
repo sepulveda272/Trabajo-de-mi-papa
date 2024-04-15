@@ -143,6 +143,6 @@ function construirYActualizarTabla() {
         contenedor.innerHTML += newRowLastLast + newRowLast + newRowCurrent;
     }
     console.log("Suma total de valores de febrero:", sumaDeValoresLastLast);
-    console.log("Suma total de valores de febrero:", sumaDeValoresLast);
-    console.log("Suma total de valores de febrero:", sumaDeValoresCurrent);
+    console.log("Suma total de valores de marzo:", sumaDeValoresLast);
+    console.log("Suma total de valores de Abril:", sumaDeValoresCurrent);
 }
