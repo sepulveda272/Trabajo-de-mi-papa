@@ -62,6 +62,9 @@ async function mostrarData() {
             let opcionesExamen = Tipo_Examen.map(tipo => 
                 `<option ${tipo === Tipo_Examen ? "selected" : ""}>${tipo}</option>`
             ).join('');
+            let opcionesSistema = Sistema.map(tipo => 
+                `<option ${tipo === Sistema ? "selected" : ""}>${tipo}</option>`
+            ).join('');
             contenidoHTML += `
             <tr>
                 <th scope="row">${_id}</th>
@@ -84,7 +87,7 @@ async function mostrarData() {
                 </td>
                 <td>
                     <select class="form-select">
-                      ${Sistema}
+                      ${opcionesSistema}
                     </select><br/>
                     <input class="form-check-input4" type="checkbox">
                     <label class="form-check-label" for="inputExamen4">Mal ingresados</label>
