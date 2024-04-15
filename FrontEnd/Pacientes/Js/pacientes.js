@@ -1,4 +1,4 @@
-import {getData} from '../Js/API.js'
+import {getData,addData} from '../Js/API.js'
 
 document.addEventListener("DOMContentLoaded", async () => {
     verificarCambioDeMes();
@@ -193,22 +193,22 @@ async function addPaciente(e){
 
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         const Tipo_Examen = [];
-        
+        const Sistema = [];
+
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 Tipo_Examen.push(checkbox.nextElementSibling.textContent);
             }
         });
 
-        const checkboxesS = document.querySelectorAll('inputExamenS[type="checkbox"]');
-        const Sistema = [];
-        
-        checkboxesS.forEach(checkbox => {
+        const prueba = document.querySelectorAll('#inputExamenS')
+
+        prueba.forEach(checkbox => {
             if (checkbox.checked) {
                 Sistema.push(checkbox.nextElementSibling.textContent);
+                console.log(Sistema);
             }
         });
-        
         const datosFormulario = {
             Nombre,
             Edad,
@@ -223,5 +223,4 @@ async function addPaciente(e){
         };
 
         addData(datosFormulario);
-        window.location.href= 'Home.html'
 }
