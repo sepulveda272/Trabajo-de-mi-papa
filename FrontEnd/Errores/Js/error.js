@@ -72,6 +72,7 @@ function construirYActualizarTabla() {
         // Crear filas para el mes actual y el mes anterior
         const newRowCurrent = `
             <tr>
+                <td></td>
                 <td>${meses[currentMonth - 1]}</td>
                 <td>${categorias[i]}</td>
                 <td>${contadorValueCurrent}</td>
@@ -83,6 +84,7 @@ function construirYActualizarTabla() {
         `;
         const newRowLast = `
             <tr>
+            <td></td>
                 <td>${meses[lastMonth - 1]}</td>
                 <td>${categorias[i]}</td>
                 <td>${contadorValueLast}</td>

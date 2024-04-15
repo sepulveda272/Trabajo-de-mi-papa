@@ -58,7 +58,7 @@ async function mostrarData() {
 
         // Generar HTML dinámicamente para cada paciente
         arrayPacientes.forEach((elemento) => {
-            const { Nombre, Edad, Sexo, Celular,Identificacion,_id,Direccion,Hora,Tipo_Examen,Fecha} = elemento;
+            const { Nombre, Edad, Sexo, Celular,Identificacion,_id,Direccion,Hora,Tipo_Examen,Fecha,Sistema} = elemento;
             let opcionesExamen = Tipo_Examen.map(tipo => 
                 `<option ${tipo === Tipo_Examen ? "selected" : ""}>${tipo}</option>`
             ).join('');
@@ -83,9 +83,9 @@ async function mostrarData() {
                 <label class="form-check-label" for="inputExamen4">Incompletos</label>
                 </td>
                 <td>
-                    <button class="btn update" style="background-color: #937DE9;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Actualizar
-                    </button>
+                    ${Sistema}
+                    <input class="form-check-input2" type="checkbox">
+                    <label class="form-check-label" for="inputExamen4">No Coinciden</label>
                 </td>
             </tr>
             `;
@@ -193,13 +193,22 @@ async function addPaciente(e){
 
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         const Tipo_Examen = [];
-
+        
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 Tipo_Examen.push(checkbox.nextElementSibling.textContent);
             }
         });
 
+        const checkboxesS = document.querySelectorAll('inputExamenS[type="checkbox"]');
+        const Sistema = [];
+        
+        checkboxesS.forEach(checkbox => {
+            if (checkbox.checked) {
+                Sistema.push(checkbox.nextElementSibling.textContent);
+            }
+        });
+        
         const datosFormulario = {
             Nombre,
             Edad,
@@ -209,7 +218,8 @@ async function addPaciente(e){
             Identificacion,
             Fecha,
             Hora,
-            Tipo_Examen
+            Tipo_Examen,
+            Sistema
         };
 
         addData(datosFormulario);
