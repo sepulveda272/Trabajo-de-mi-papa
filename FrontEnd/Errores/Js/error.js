@@ -80,6 +80,8 @@ function construirYActualizarTabla() {
         const contadorValueLast = parseInt(localStorage.getItem(`contador${i+1}_${lastMonth}`) || '0');
         const contadorValueLastLast = parseInt(localStorage.getItem(`contador${i+1}_${lastLastMonth}`) || '0');
 
+
+        console.log(contadorValueCurrent);
         sumaDeValoresLastLast += contadorValueLastLast;
         sumaDeValoresLast += contadorValueLast;
         sumaDeValoresCurrent += contadorValueCurrent;
@@ -110,8 +112,6 @@ function construirYActualizarTabla() {
             </tr>
         `;
         
-
-        console.log(contadorValueLastLast);
 
         const newRowLastLast = `
             <tr>
