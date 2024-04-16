@@ -60,6 +60,13 @@ function construirYActualizarTabla() {
         60,
         60
     ];
+
+    const pago = [
+        1460000,
+        2000000,
+        2000000,
+        1460000
+    ];
     const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
     // Obtener el mes actual y el mes anterior
@@ -89,14 +96,18 @@ function construirYActualizarTabla() {
         // Calcular tiempo gastado y tiempo real para el mes actual
         const tiempoGastadoCurrent = contadorValueCurrent * estimado[i];
         const tiempoRealCurrent = 86400 - tiempoGastadoCurrent;
+        const saldoRealCurrent = Math.floor((tiempoGastadoCurrent * pago[i])/86400)
 
         // Calcular tiempo gastado y tiempo real para el mes anterior
         const tiempoGastadoLast = contadorValueLast * estimado[i];
         const tiempoRealLast = 86400 - tiempoGastadoLast;
+        const saldoRealLast = Math.floor((tiempoRealLast * pago[i])/86400);
+
 
         // Calcular tiempo gastado y tiempo real para el mes anterior
         const tiempoGastadoLastLast = contadorValueLastLast * estimado[i];
         const tiempoRealLastLast = 86400 - tiempoGastadoLastLast;
+        const saldoRealLastLast = Math.floor((tiempoRealLastLast * pago[i])/86400);
 
         // Crear filas para el mes actual y el mes anterior
         const newRowCurrent = `
@@ -108,7 +119,8 @@ function construirYActualizarTabla() {
                 <th>${tiempoGastadoCurrent} min</th>
                 <th>${86400} min</th>
                 <th>${tiempoRealCurrent} min</th>
-                <th>$1.460.000</th>
+                <th>$${pago[i]}</th>
+                <th>$${saldoRealCurrent}</th>
             </tr>
         `;
         
@@ -122,7 +134,8 @@ function construirYActualizarTabla() {
                 <td>${tiempoGastadoLastLast} min</td>
                 <td>${86400} min</td>
                 <td>${tiempoRealLastLast} min</td>
-                <td>$1.460.000</td>
+                <td>$${pago[i]}</td>
+                <td>$${saldoRealLastLast}</td>
             </tr>
         `;
 
@@ -135,7 +148,8 @@ function construirYActualizarTabla() {
                 <td>${tiempoGastadoLast} min</td>
                 <td>${86400} min</td>
                 <td>${tiempoRealLast} min</td>
-                <td>$1.460.000</td>
+                <td>$${pago[i]}</td>
+                <td>$${saldoRealLast}</td>
             </tr>
         `;
 
@@ -146,7 +160,8 @@ function construirYActualizarTabla() {
     console.log("Suma total de valores de marzo:", sumaDeValoresLast);
     console.log("Suma total de valores de Abril:", sumaDeValoresCurrent);
 
-    const por = (sumaDeValoresCurrent*100)/2813
+    const por = ((sumaDeValoresLast*100)/2349).toFixed(2);
+    const por1 = ((sumaDeValoresLastLast*100)/2813).toFixed(2);
 
     const tabla_por = document.querySelector(".por")
 
@@ -155,13 +170,13 @@ function construirYActualizarTabla() {
     contenidoHTML = `
     <tr>
         <td>Febrero</td>
-        <td>${sumaDeValoresCurrent}</td>
-        <td>${por}</td>
+        <td>${sumaDeValoresLastLast}</td>
+        <td>${por1}%</td>
     </tr>
     <tr>
         <td>Marzo</td>
-        <td>Marzo</td>
-        <td>Marzo</td>
+        <td>${sumaDeValoresLast}</td>
+        <td>${por}%</td>
     </tr>
     `;
 

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     verificarCambioDeMesAnterior();
     await mostrarData();
     setupCheckboxPersistence();
+    guardarDatosEnLocalStorage();
 });
 
 function checkboxChanged1(checkbox) {
@@ -262,4 +263,49 @@ async function addPaciente(e){
 
         addData(datosFormulario);
         window.location.href= 'Home.html'
+}
+
+function guardarDatosEnLocalStorage() {
+    const datosIniciales = {
+        "contador4_2": 50,
+        "contador2_contador1": 0,
+        "contador3_2": 25,
+        "contador2_4": 1,
+        "lastStoredMonth": 2,
+        "contador3": 0,
+        "contador2_2": 30,
+        "contador0_contador3": 0,
+        "contador4_4": 1,
+        "contador4_contador1": 0,
+        "contador2_3": 45,
+        "contador2_contador4": 0,
+        "contador0_contador4": 0,
+        "contador4_3": 58,
+        "contador2_contador3": 0,
+        "counters": JSON.stringify({"2": {"contador1": 0, "contador2": 0, "contador3": 0, "contador4": 0}}),
+        "contador4_contador2": 0,
+        "contador1_4": 0,
+        "contador2": 0,
+        "contador3_3": 38,
+        "contador0_contador2": 0,
+        "contador1_3": 60,
+        "fecha4": "2024-04-15T20:09:44.033Z",
+        "contador2_contador2": 0,
+        "contador4_contador4": 0,
+        "contador4": 0,
+        "contador0_contador1": 0,
+        "contador1": 0,
+        "contador1_2": 40,
+        "contador3_4": 0,
+        "contador4_contador3": 0,
+        "lastLastStoredMonth": 4
+    };
+
+    // Iterar sobre cada clave del objeto de datos iniciales
+    Object.keys(datosIniciales).forEach(clave => {
+        // Si el elemento no existe en localStorage, establecerlo
+        if (localStorage.getItem(clave) === null) {
+            localStorage.setItem(clave, datosIniciales[clave]);
+        }
+    });
 }
