@@ -48,17 +48,17 @@ function construirYActualizarTabla() {
 
     // Nombres de las categorías para cada contador
     const categorias = [
-        "Paciente",
+        "Datos de pacientes erroneos",
         "Exámenes Mal Ingresados",
         "Exámenes Faltantes",
-        "Mal Ingresados"
+        "Ingreso incompleto en plataforma"
     ];
 
     const estimado = [
         2,
         60,
         60,
-        60
+        2
     ];
 
     const pago = [
@@ -95,19 +95,19 @@ function construirYActualizarTabla() {
 
         // Calcular tiempo gastado y tiempo real para el mes actual
         const tiempoGastadoCurrent = contadorValueCurrent * estimado[i];
-        const tiempoRealCurrent = 86400 - tiempoGastadoCurrent;
-        const saldoRealCurrent = Math.floor((tiempoGastadoCurrent * pago[i])/86400)
+        const tiempoRealCurrent = 11280 - tiempoGastadoCurrent;
+        const saldoRealCurrent = Math.floor((pago[i] / 11280 )* tiempoGastadoCurrent);
 
         // Calcular tiempo gastado y tiempo real para el mes anterior
         const tiempoGastadoLast = contadorValueLast * estimado[i];
-        const tiempoRealLast = 86400 - tiempoGastadoLast;
-        const saldoRealLast = Math.floor((tiempoRealLast * pago[i])/86400);
+        const tiempoRealLast = 11280 - tiempoGastadoLast;
+        const saldoRealLast = Math.floor((pago[i] / 11280) * tiempoGastadoLast);
 
 
         // Calcular tiempo gastado y tiempo real para el mes anterior
         const tiempoGastadoLastLast = contadorValueLastLast * estimado[i];
-        const tiempoRealLastLast = 86400 - tiempoGastadoLastLast;
-        const saldoRealLastLast = Math.floor((tiempoRealLastLast * pago[i])/86400);
+        const tiempoRealLastLast = 11280 - tiempoGastadoLastLast;
+        const saldoRealLastLast = Math.floor((pago[i] / 11280)* tiempoGastadoLastLast);
 
         // Crear filas para el mes actual y el mes anterior
         const newRowCurrent = `
@@ -117,7 +117,7 @@ function construirYActualizarTabla() {
                 <th>${contadorValueCurrent}</th>
                 <th>${estimado[i]} minutos</th>
                 <th>${tiempoGastadoCurrent} min</th>
-                <th>${86400} min</th>
+                <th>${11280} min</th>
                 <th>${tiempoRealCurrent} min</th>
                 <th>$${pago[i]}</th>
                 <th>$${saldoRealCurrent}</th>
@@ -132,7 +132,7 @@ function construirYActualizarTabla() {
                 <td>${contadorValueLastLast}</td>
                 <td>${estimado[i]} minutos</td>
                 <td>${tiempoGastadoLastLast} min</td>
-                <td>${86400} min</td>
+                <td>${11280} min</td>
                 <td>${tiempoRealLastLast} min</td>
                 <td>$${pago[i]}</td>
                 <td>$${saldoRealLastLast}</td>
@@ -146,7 +146,7 @@ function construirYActualizarTabla() {
                 <td>${contadorValueLast}</td>
                 <td>${estimado[i]} minutos</td>
                 <td>${tiempoGastadoLast} min</td>
-                <td>${86400} min</td>
+                <td>${11280} min</td>
                 <td>${tiempoRealLast} min</td>
                 <td>$${pago[i]}</td>
                 <td>$${saldoRealLast}</td>
@@ -171,11 +171,13 @@ function construirYActualizarTabla() {
     <tr>
         <td>Febrero</td>
         <td>${sumaDeValoresLastLast}</td>
+        <td>2813</td>
         <td>${por1}%</td>
     </tr>
     <tr>
         <td>Marzo</td>
         <td>${sumaDeValoresLast}</td>
+        <td>2349</td>
         <td>${por}%</td>
     </tr>
     `;
